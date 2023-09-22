@@ -4,21 +4,25 @@ declare(strict_types=1);
 
 namespace App\Classes;
 
-use App\Classes\Banking;
+use App\Classes\BankingManager;
+use Customer;
 
 class CliApp
 {
   private const LOGIN = 1;
   private const REGISTRATION = 2;
 
-  public Bank $bank;
+  private BankingManager $banking_manager;
 
   private array $options = [
     self::LOGIN => 'Login',
     self::REGISTRATION => 'Registration',
   ];
 
-
+  public function __construct()
+  {
+    $this->banking_manager = new BankingManager();
+  }
 
   public function run()
   {
@@ -31,10 +35,11 @@ class CliApp
 
     switch ($user_input) {
       case self::LOGIN:
-        printf('login');
+        $this->banking_manager->loginUser();
         break;
       case self::REGISTRATION:
-        printf("Regidtration");
+        printf("Registration");
+        $this->banking_manager->createUserAccount(new Customer());
         break;
       default:
         printf("invalid");

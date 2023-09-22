@@ -4,5 +4,5 @@ namespace App\Interfaces;
 
 interface Registerable
 {
-  public function Register($data);
+  public function Register();
 }
