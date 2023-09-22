@@ -21,13 +21,13 @@ class BankingManager
   }
   public function loginUser()
   {
-    printf('login method called');
+    printf("login method called \n");
     $this->user->login();
   }
   public function createUserAccount(Registerable $customer)
   {
-    $customer->Register();
     // create user account
+    $customer->Register();
   }
 
   public function showUserTransaction()

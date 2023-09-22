@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Classes;
 
 use App\Classes\BankingManager;
-use Customer;
+use App\Classes\Customer;
 
 class CliApp
 {
@@ -38,7 +38,7 @@ class CliApp
         $this->banking_manager->loginUser();
         break;
       case self::REGISTRATION:
-        printf("Registration");
+        // printf("Registration");
         $this->banking_manager->createUserAccount(new Customer());
         break;
       default:
