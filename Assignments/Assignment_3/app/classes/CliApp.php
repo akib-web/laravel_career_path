@@ -2,10 +2,16 @@
 
 declare(strict_types=1);
 
+namespace App\Classes;
+
+use App\Classes\Banking;
+
 class CliApp
 {
   private const LOGIN = 1;
   private const REGISTRATION = 2;
+
+  public Bank $bank;
 
   private array $options = [
     self::LOGIN => 'Login',
