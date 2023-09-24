@@ -4,45 +4,46 @@ declare(strict_types=1);
 
 namespace App\Classes;
 
-use App\Classes\BankingManager;
-use App\Classes\Customer;
+use App\Classes\User;
+use App\Classes\Bank;
+use App\Classes\DataStorage;
 
 class CliApp
 {
   private const LOGIN = 1;
   private const REGISTRATION = 2;
 
-  private BankingManager $banking_manager;
+  private Bank $bank;
 
-  private array $options = [
+  private array $LoginOptions = [
     self::LOGIN => 'Login',
     self::REGISTRATION => 'Registration',
   ];
 
   public function __construct()
   {
-    $this->banking_manager = new BankingManager();
+    $this->bank = new Bank(new DataStorage());
   }
 
   public function run()
   {
     printf("Choose Option \n");
-    foreach ($this->options as $key => $value) {
-      printf("%d. %s \n", $key, $value);
+    foreach ($this->LoginOptions as $index => $title) {
+      printf("%d. %s \n", $index, $title);
     }
 
     $user_input = readline('Select option: ');
 
     switch ($user_input) {
       case self::LOGIN:
-        $this->banking_manager->loginUser();
+        $this->bank->userLogin(new User());
         break;
       case self::REGISTRATION:
-        // printf("Registration");
-        $this->banking_manager->createUserAccount(new Customer());
+        $this->bank->userRegistration(new User());
         break;
       default:
-        printf("invalid");
+        printf("# === invalid === (404!) \n");
+        $this->run();
     }
   }
 }

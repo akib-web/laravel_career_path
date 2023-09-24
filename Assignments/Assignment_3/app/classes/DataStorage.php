@@ -2,21 +2,24 @@
 
 namespace App\Classes;
 
-class DataStorage
+use App\Interfaces\Storage;
+
+
+class DataStorage implements Storage
 {
-  public function saveData(string $filename,array $data)
+  public function saveData(string $filename, array $data)
   {
     // save given data to the file
-    
+
     file_put_contents($this->getDataFilePath($filename), serialize($data));
   }
   public function loadData(string $filename)
   {
     if (file_exists($this->getDataFilePath($filename))) {
-        $data = unserialize(file_get_contents($this->getDataFilePath($filename)));
+      $data = unserialize(file_get_contents($this->getDataFilePath($filename)));
     }
-    if (!is_array($data)) {
-        return [];
+    if (!isset($data) || !is_array($data)) {
+      return [];
     }
 
     return $data;
