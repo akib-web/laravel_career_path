@@ -4,5 +4,5 @@ namespace App\Interfaces;
 
 interface Authenticatable
 {
-  public function login(array $data);
+  public function login(string $email, string $password);
 }

@@ -12,27 +12,28 @@ use App\Interfaces\Registerable;
  *  1. bank has to perform user account creation, show user'r transaction, trasaction proccess
  *  2. 
  */
-
 class Bank
 {
   private Storage $storage;
-  private array $user;
+  private array $customer;
 
   public function __construct(Storage $storage)
   {
     $this->storage = $storage;
 
-    $this->user = $this->storage->loadData('users');
+    $this->customer = $this->storage->loadData('customers');
   }
   // login user
-  public function userLogin(Authenticatable $user)
-  {
-    $user->login($this->user);
+  public function customerLogin(Authenticatable $user)
+  {    
+    $email = readline("Enter email: ");
+    $password = readline("Enter Password: ");
+    $user->login($email,$password);
   }
   //registration new user
-  public function userRegistration(Registerable $user)
+  public function customerRegistration(Registerable $customer)
   {
-    $user->register(User::getFileName(), $this->storage);
-    $this->userLogin(new User());
+    // $user->register(User::getFileName(), $this->storage);
+    // $this->userLogin(new User());
   }
 }
