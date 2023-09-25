@@ -17,33 +17,41 @@ class CLIApp{
         self::VIEW_CATEGORIES => 'VIEW_CATEGORIES',
     ];
     public function __construct(){
-        $this->MyExpenceManager = new MyExpenceManager();
+        $this->MyExpenceManager = new MyExpenceManager(new FileStorage());
     }
     public function run(){
+        printf("\n");
         foreach ($this->options as $index => $title){
             printf("%d . %s \n",$index, $title);
         }
+        printf("\n");
 
         $select = readline('Select: ');
 
         switch ($select) {
             case self::ADD_INCOME:
                 printf("ADD_INCOME");
+                $this->run();
                 break;
             case self::ADD_EXPENCE:
                 printf("ADD_EXPENCE");
+                $this->run();
                 break;
             case self::VIEW_EXPENCE:
                 printf("VIEW_EXPENCE");
+                $this->run();
                 break;
             case self::VIEW_INCOME:
                 printf("VIEW_INCOME");
+                $this->run();
                 break;
             case self::VIEW_SAVINGS:
                 printf("VIEW_SAVINGS");
+                $this->run();
                 break;
             case self::VIEW_CATEGORIES:
                 printf("VIEW_CATEGORIES");
+                $this->MyExpenceManager->showCategories();
                 break;
             default:
                 printf("EXIT");

@@ -1,0 +1,1 @@
+a:3:{i:0;O:14:"IncomeCategory":2:{s:4:"type";E:22:"TransactionType:INCOME";s:4:"name";s:6:"salary";}i:1;O:14:"IncomeCategory":2:{s:4:"type";r:3;s:4:"name";s:11:"Freelancing";}i:2;O:14:"IncomeCategory":2:{s:4:"type";r:3;s:4:"name";s:6:"tution";}}
