@@ -49,7 +49,7 @@ class CLIApp
                 $this->run();
                 break;
             case self::VIEW_INCOME:
-                printf("VIEW_INCOME");
+                $this->MyExpenceManager->viewIncome();
                 $this->run();
                 break;
             case self::VIEW_SAVINGS:

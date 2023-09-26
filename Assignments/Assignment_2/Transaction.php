@@ -8,7 +8,7 @@ class Transaction
   private float $amount;
   private string $category;
 
-  public function getFileName()
+  public static function getFileName()
   {
     return 'transations';
   }
