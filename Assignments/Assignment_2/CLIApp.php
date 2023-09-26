@@ -1,6 +1,7 @@
 <?php
 
-class CLIApp{
+class CLIApp
+{
     private MyExpenceManager $MyExpenceManager;
     private const ADD_INCOME = 1;
     private const ADD_EXPENCE = 2;
@@ -16,13 +17,15 @@ class CLIApp{
         self::VIEW_SAVINGS => 'VIEW_SAVINGS',
         self::VIEW_CATEGORIES => 'VIEW_CATEGORIES',
     ];
-    public function __construct(){
+    public function __construct()
+    {
         $this->MyExpenceManager = new MyExpenceManager(new FileStorage());
     }
-    public function run(){
+    public function run()
+    {
         printf("\n");
-        foreach ($this->options as $index => $title){
-            printf("%d . %s \n",$index, $title);
+        foreach ($this->options as $index => $title) {
+            printf("%d . %s \n", $index, $title);
         }
         printf("\n");
 
@@ -30,7 +33,11 @@ class CLIApp{
 
         switch ($select) {
             case self::ADD_INCOME:
-                printf("ADD_INCOME");
+                // printf("ADD_INCOME");
+                // $this->run();
+                $amount = readline('Enter amount: ');
+                $category = readline('Enter category: ');
+                $this->MyExpenceManager->addIncome($amount, $category);
                 $this->run();
                 break;
             case self::ADD_EXPENCE:
