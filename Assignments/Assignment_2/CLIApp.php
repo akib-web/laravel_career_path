@@ -41,11 +41,14 @@ class CLIApp
                 $this->run();
                 break;
             case self::ADD_EXPENCE:
-                printf("ADD_EXPENCE");
+                // printf("ADD_EXPENCE");
+                $amount = readline('Enter Expence: ');
+                $category = readline('Enter Category : ');
+                $this->MyExpenceManager->addExpence($amount, $category);
                 $this->run();
                 break;
             case self::VIEW_EXPENCE:
-                printf("VIEW_EXPENCE");
+                $this->MyExpenceManager->viewExpence();
                 $this->run();
                 break;
             case self::VIEW_INCOME:

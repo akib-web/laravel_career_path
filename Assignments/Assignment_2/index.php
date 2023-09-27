@@ -6,9 +6,11 @@ require_once 'TransactionType.php';
 require_once 'Storage.php';
 require_once 'FileStorage.php';
 require_once 'category.php';
-require_once 'IncomeCategory.php';
 require_once 'Transaction.php';
+require_once 'IncomeCategory.php';
 require_once 'Income.php';
+require_once 'Expence.php';
+require_once 'ExpenceCategory.php';
 
 $CLIApp = new CLIApp();
 $CLIApp->run();

@@ -6,7 +6,7 @@ class Transaction
 {
   private TransactionType $type;
   private float $amount;
-  private string $category;
+  private Category $category;
 
   public static function getFileName()
   {
@@ -22,12 +22,12 @@ class Transaction
     return $this->amount;
   }
 
-  public function setCategory(string $category): void
+  public function setCategory(Category $category): void
   {
     $this->category = $category;
   }
 
-  public function getcategory(): string
+  public function getcategory(): Category
   {
     return $this->category;
   }
