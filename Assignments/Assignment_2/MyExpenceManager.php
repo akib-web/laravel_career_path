@@ -112,6 +112,36 @@ class MyExpenceManager
         printf("==============================\n\n");
     }
 
+    public function suggestCategory(TransactionType $type){
+        printf("==============================\n");
+        $income_cat_count=1;
+        $enpence_cat_count=1;
+        printf("Select Category : \n");
+        foreach ($this->categories as $category) {
+            if ($category->getType() === $type) {
+                printf("%d. %s,\n",$income_cat_count, $category->getName());
+                $income_cat_count++;
+            }else if($category->getType() === $type){
+                printf("%d. %s,\n",$enpence_cat_count, $category->getName());
+                $enpence_cat_count++;
+            }
+        }
+        printf("==============================\n\n");
+    }
+
+    public function viewSavings(){
+        (float) $savings = 0;
+        foreach ($this->transactions as $transaction) {
+            if ($transaction->getCategory()->getType() === TransactionType::INCOME) {
+                $savings += $transaction->getAmount();
+            }
+            if ($transaction->getCategory()->getType() === TransactionType::EXPENCE) {
+                $savings -= $transaction->getAmount();
+            }
+        }
+        printf("Total savings: %.2f \n",$savings);
+    }
+
     public function getCategory(string $name, TransactionType $type)
     {
         foreach ($this->categories as $category) {

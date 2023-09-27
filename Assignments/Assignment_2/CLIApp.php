@@ -36,6 +36,7 @@ class CLIApp
                 // printf("ADD_INCOME");
                 // $this->run();
                 $amount = readline('Enter amount: ');
+                $this->MyExpenceManager->suggestCategory(TransactionType::INCOME);
                 $category = readline('Enter category: ');
                 $this->MyExpenceManager->addIncome($amount, $category);
                 $this->run();
@@ -43,6 +44,7 @@ class CLIApp
             case self::ADD_EXPENCE:
                 // printf("ADD_EXPENCE");
                 $amount = readline('Enter Expence: ');
+                $this->MyExpenceManager->suggestCategory(TransactionType::EXPENCE);
                 $category = readline('Enter Category : ');
                 $this->MyExpenceManager->addExpence($amount, $category);
                 $this->run();
@@ -56,7 +58,8 @@ class CLIApp
                 $this->run();
                 break;
             case self::VIEW_SAVINGS:
-                printf("VIEW_SAVINGS");
+                // printf("VIEW_SAVINGS");
+                $this->MyExpenceManager->viewSavings();
                 $this->run();
                 break;
             case self::VIEW_CATEGORIES:
