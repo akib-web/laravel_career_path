@@ -36,10 +36,10 @@ class CliApp
 
     switch ($user_input) {
       case self::LOGIN:
-        $this->bank->customerLogin(new User());
+        $this->bank->customerLogin();
         break;
       case self::REGISTRATION:
-        $this->bank->customerRegistration(new User());
+        $this->bank->customerRegistration();
         break;
       default:
         printf("# === invalid === (404!) \n");

@@ -2,7 +2,7 @@
 
 namespace App\Classes;
 
-use App\Interfaces\Storage;
+use App\Classes\Storage;
 
 
 class DataStorage implements Storage

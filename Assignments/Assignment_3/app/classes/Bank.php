@@ -2,38 +2,61 @@
 
 namespace App\Classes;
 
-use App\Classes\User;
-use App\Interfaces\Authenticatable;
-use App\Interfaces\Storage;
-use App\Interfaces\Registerable;
+use App\Classes\AuthUser;
+use App\Classes\Authenticatable;
+use App\Classes\Storage;
+use App\Classes\Registerable;
 
 /**
  * create a class that will manage BankingManager proccess
  *  1. bank has to perform user account creation, show user'r transaction, trasaction proccess
- *  2. 
  */
+
 class Bank
 {
   private Storage $storage;
-  private array $customer;
+  private Customer $customer;
+  private UserDashboard $dashboard;
+  private array $customers;
 
   public function __construct(Storage $storage)
   {
     $this->storage = $storage;
-
-    $this->customer = $this->storage->loadData('customers');
+    $this->customers = $storage->loadData(Customer::getModelName());
   }
   // login user
-  public function customerLogin(Authenticatable $user)
-  {    
+  public function customerLogin()
+  {
     $email = readline("Enter email: ");
     $password = readline("Enter Password: ");
-    $user->login($email,$password);
+
+    foreach ($this->customers as $key => $value) {
+      if ($value->getRole() === UserType::CUSTOMER && $value->getEmail() === $email && $value->getPassword() === $password) {
+        $this->dashboard = new UserDashboard();
+        $this->dashboard->show();
+        return;
+      }
+    }
+    printf("500! login failed! \n");
+
+    // var_dump($this->customers);
   }
   //registration new user
-  public function customerRegistration(Registerable $customer)
+  public function customerRegistration()
   {
-    // $user->register(User::getFileName(), $this->storage);
-    // $this->userLogin(new User());
+    $name = readline("Enter Name: ");
+    $email = readline("Enter email: ");
+    $password = readline("Enter Password: ");
+
+    $newCustomer = new Customer();
+    $newCustomer->setName($name);
+    $newCustomer->setEmail($email);
+    $newCustomer->setPassword($password);
+    $this->customers[] = $newCustomer;
+    $this->storage->saveData(Customer::getModelName(), $this->customers);
+  }
+
+  public function UserDashboard()
+  {
   }
 }

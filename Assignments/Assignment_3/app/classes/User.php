@@ -2,64 +2,70 @@
 
 namespace App\Classes;
 
-use App\Interfaces\Storage;
-use App\Interfaces\Authenticatable;
-use App\Interfaces\Registerable;
-use App\Classes\DataStorage;
+use App\Classes\AuthUser;
 
-class User implements Authenticatable, Registerable
+class User
 {
-  private DataStorage $DataStorage;
+  protected UserType $role;
+  private string $name;
+  private string $email;
+  private string $password;
 
-  public function __construct(){
-    $this->DataStorage = new DataStorage();
-  }
-  public static function getFileName()
+  public static function getModelName()
   {
     return 'users';
   }
-  public function login(string $email, string $password)
+  public function getRole()
   {
-    // get Autheticate return then login
-    printf('%s, %s', $email, $password);
-    
-    $data[] = $this->DataStorage->loadData('users');
-
-    var_dump($data);
-
-    // foreach ($users as $key => $value) {
-    //   // var_dump($value);
-    //   // die();
-    //   if ($value['email'] == $user_email  &&  $value['password'] == $user_password) {
-    //     $DataStorage->saveData('login', $value);
-    //     $this->dashboard();
-    //     break;
-    //   }
-    // }
-
-    // var_dump($user_data);
+    return $this->role;
+  }
+  public function setName($name)
+  {
+    $this->name = $name;
+  }
+  public function getName()
+  {
+    return $this->name;
+  }
+  public function setEmail($email)
+  {
+    $this->email = $email;
+  }
+  public function getEmail()
+  {
+    return $this->email;
+  }
+  public function setPassword($password)
+  {
+    $this->password = $password;
+  }
+  public function getPassword()
+  {
+    return $this->password;
   }
 
-  public function register(string $filename, $storage)
+  public function login()
   {
-    $user_name = readline("Enter Name: ");
-    $user_email = readline("Enter email: ");
-    $user_password = readline("Enter Password: ");
+    $email = $this->email;
+    $password = $this->password;
 
-    $data = [
-      "id" => time(),
-      "name" => $user_name,
-      "email" => $user_email,
-      "password" => $user_password
-    ];
-    
-    $fileData = $storage->loadData($filename);
-    array_push($fileData, $data);
-    $storage->saveData($filename, $fileData);
+    if (isset($email) && isset($password)) {
+      print("loging logic process....!");
+    } else {
+      printf("404!.. Email or password not found!");
+    }
   }
-
-  public function dashboard()
+  public function register()
   {
-    printf("This is user dashboard");
+    $role = $this->role;
+    $name = $this->name;
+    $email = $this->email;
+    $password = $this->password;
+
+    if (isset($role) && isset($name) && isset($email) && isset($password)) {
+      print("registration logic processing....!");
+    } else {
+      printf("404!.. Email or password not found!");
+    }
   }
 }
