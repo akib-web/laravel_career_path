@@ -2,14 +2,16 @@
 
 namespace App\Classes;
 
-use DateTime;
+use App\Classes\TransactionType;
 
 class Transaction
 {
   private float $amount;
+  protected TransactionType $type;
+  protected TransactionStatus $status;
   private Customer $customer;
 
-  public function getModelName()
+  public static function getModelName()
   {
     return "transactions";
   }
@@ -22,5 +24,23 @@ class Transaction
   public function getCustomer()
   {
     return $this->customer;
+  }
+
+  public function setAmount(float $amount)
+  {
+    $this->amount = $amount;
+  }
+
+  public function getAmount()
+  {
+    return $this->amount;
+  }
+  public function setStatus(TransactionStatus $status)
+  {
+    $this->status = $status;
+  }
+  public function getStatus()
+  {
+    return $this->status;
   }
 }

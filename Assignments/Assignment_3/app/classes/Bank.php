@@ -32,7 +32,7 @@ class Bank
 
     foreach ($this->customers as $key => $value) {
       if ($value->getRole() === UserType::CUSTOMER && $value->getEmail() === $email && $value->getPassword() === $password) {
-        $this->dashboard = new UserDashboard();
+        $this->dashboard = new UserDashboard($value);
         $this->dashboard->show();
         return;
       }

@@ -7,6 +7,8 @@ use App\Classes\AuthUser;
 class User
 {
   protected UserType $role;
+  protected int $id;
+  protected int $bankAcc;
   private string $name;
   private string $email;
   private string $password;
@@ -14,6 +16,16 @@ class User
   public static function getModelName()
   {
     return 'users';
+  }
+
+  public function getID()
+  {
+    return $this->id;
+  }
+
+  public function getBankAcc()
+  {
+    return $this->bankAcc;
   }
   public function getRole()
   {

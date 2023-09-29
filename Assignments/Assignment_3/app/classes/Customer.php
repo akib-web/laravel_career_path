@@ -11,5 +11,7 @@ class Customer extends User
   public function __construct()
   {
     $this->role = UserType::CUSTOMER;
+    $this->id = time();
+    $this->bankAcc = rand();
   }
 }

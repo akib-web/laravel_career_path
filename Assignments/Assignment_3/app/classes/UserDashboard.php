@@ -2,6 +2,10 @@
 
 namespace App\Classes;
 
+use App\Classes\DepositTransaction;
+use App\Classes\Customer;
+use App\Classes\DataStorage;
+
 class UserDashboard
 {
   // See all of their transactions
@@ -15,7 +19,9 @@ class UserDashboard
   private const TRANSFER = 4;
   private const CURRENT_BALANCE = 5;
 
-  private Transaction $transaction;
+  private array $transactions;
+  private Customer $customer;
+  private DataStorage $dataStorage;
 
   public array $options = [
     self::TRANSACTION => "Transaction",
@@ -25,9 +31,12 @@ class UserDashboard
     self::CURRENT_BALANCE => "Current Balance",
   ];
 
-  public function __construct()
+  public function __construct(Customer $customer)
   {
-    $this->transaction = new Transaction();
+    $this->customer = $customer;
+    $this->dataStorage = new DataStorage();
+
+    $this->transactions = $this->dataStorage->loadData(Transaction::getModelName());
   }
 
   public function show()
@@ -44,11 +53,30 @@ class UserDashboard
 
     switch ($select) {
       case self::TRANSACTION:
-        // $this->transaction->showAll();
+        foreach ($this->transactions as $key => $transaction) {
+          var_dump($transaction);
+          die();
+          $key++;
+          $accNumber = $transaction->getCustomer();
+          $accNumber = $accNumber->getAccNumber();
+          $type = $transaction->type;
+          $amount = $transaction->getAmount();
+          printf("ACC_number: %d ; Type: %s ; Amount: %.2f \n", $accNumber, $type, $amount);
+          // var_dump($transaction);
+        }
         break;
 
       case self::DEPOSIT:
-        $this->transaction->deposit();
+        $depositAmount = readline("Enter Amount : \n");
+
+        $deposit = new DepositTransaction();
+        $deposit->setCustomer($this->customer);
+        $deposit->setAmount($depositAmount);
+        $deposit->setStatus(TransactionStatus::COMPLETED);
+
+        $this->transactions[$this->customer->getBankAcc()][] = $deposit;
+
+        $this->dataStorage->saveData(Transaction::getModelName(), $this->transactions);
         break;
 
       case self::WITHDRAW:
