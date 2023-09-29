@@ -2,10 +2,7 @@
 
 namespace App\Classes;
 
-use App\Classes\AuthUser;
-use App\Classes\Authenticatable;
 use App\Classes\Storage;
-use App\Classes\Registerable;
 
 /**
  * create a class that will manage BankingManager proccess
@@ -15,7 +12,6 @@ use App\Classes\Registerable;
 class Bank
 {
   private Storage $storage;
-  private Customer $customer;
   private UserDashboard $dashboard;
   private array $customers;
 
@@ -33,6 +29,8 @@ class Bank
     foreach ($this->customers as $key => $value) {
       if ($value->getRole() === UserType::CUSTOMER && $value->getEmail() === $email && $value->getPassword() === $password) {
         $this->dashboard = new UserDashboard($value);
+        printf("Login Success! \n");
+        printf("============== DashBoard (%s) ================== \n", $value->getEmail());
         $this->dashboard->show();
         return;
       }
@@ -54,9 +52,8 @@ class Bank
     $newCustomer->setPassword($password);
     $this->customers[] = $newCustomer;
     $this->storage->saveData(Customer::getModelName(), $this->customers);
-  }
-
-  public function UserDashboard()
-  {
+    printf("Registration successfull. \n");
+    printf("========== Login here ============ \n");
+    $this->customerLogin();
   }
 }

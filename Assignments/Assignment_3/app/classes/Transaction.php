@@ -43,4 +43,8 @@ class Transaction
   {
     return $this->status;
   }
+  public function getType()
+  {
+    return  $this->type;
+  }
 }
