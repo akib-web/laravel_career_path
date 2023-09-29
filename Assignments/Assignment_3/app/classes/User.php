@@ -8,7 +8,6 @@ class User
 {
   protected UserType $role;
   protected int $id;
-  protected int $bankAcc;
   private string $name;
   private string $email;
   private string $password;
@@ -23,10 +22,6 @@ class User
     return $this->id;
   }
 
-  public function getBankAcc()
-  {
-    return $this->bankAcc;
-  }
   public function getRole()
   {
     return $this->role;
@@ -54,30 +49,5 @@ class User
   public function getPassword()
   {
     return $this->password;
-  }
-
-  public function login()
-  {
-    $email = $this->email;
-    $password = $this->password;
-
-    if (isset($email) && isset($password)) {
-      print("loging logic process....!");
-    } else {
-      printf("404!.. Email or password not found!");
-    }
-  }
-  public function register()
-  {
-    $role = $this->role;
-    $name = $this->name;
-    $email = $this->email;
-    $password = $this->password;
-
-    if (isset($role) && isset($name) && isset($email) && isset($password)) {
-      print("registration logic processing....!");
-    } else {
-      printf("404!.. Email or password not found!");
-    }
   }
 }
