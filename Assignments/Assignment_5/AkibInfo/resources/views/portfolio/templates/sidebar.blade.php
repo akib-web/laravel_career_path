@@ -10,7 +10,20 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="nav navbar-nav">
-                    <li class="nav-item">
+                    {{-- {{dd($settings)}} --}}
+                    @forelse ($settings['active_pages'] as $menu)
+                        <li class="nav-item">
+                            <a class="nav-link {{$menu['active']}}"
+                            href="{{url($menu['slug'])}}">
+                                {{$menu['name']}}<i class="{{$menu['icon']}}"></i>
+                            </a>
+                        </li>
+                    @empty
+                        <li class="nav-item">
+                            <a class="nav-link" href="#header">Home<i class="fa fa-home"></i></a>
+                        </li>
+                    @endforelse
+                    {{-- <li class="nav-item">
                         <a class="nav-link" href="#header">Home<i class="fa fa-home"></i></a>
                     </li>
                     <li class="nav-item">
@@ -27,7 +40,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#contact">Contact<i class="fa fa-envelope"></i></a>
-                    </li>
+                    </li> --}}
                 </ul>
             </div>
         </nav>

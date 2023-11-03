@@ -1,3 +1,8 @@
 {
-    "name" : "Md Akib Rahman"
+    "name" : "Md Akib Rahman",
+    "designation" : ["Web Developer, WordPress Developer, Laravel Developer"],
+    "image":"akib.jpg",
+    "resume_link":"akib-resume.pdf",
+    "short_desc":"test data",
+    "description":"Long Description"
 }

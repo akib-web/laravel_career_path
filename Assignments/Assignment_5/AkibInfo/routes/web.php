@@ -14,4 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get("/", [FrontendController::class,'homeIndex'])->name('home');
+Route::get("/", [FrontendController::class, 'homeIndex'])->name('home');
+Route::get("/{slug}", [FrontendController::class, 'homeIndex']);
+Route::get("/projects/{project_slug}", [FrontendController::class, 'projecDetails'])->name('projecDetails');
