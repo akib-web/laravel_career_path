@@ -1,0 +1,25 @@
+{
+    "active_pages" : [
+        {
+            "name":"Home",
+            "slug":"home",
+            "template":"hero",
+            "active":"active",
+            "icon":"fa fa-home"
+        },
+        {
+            "name":"Work Experience",
+            "slug":"experiences",
+            "template":"experiences",
+            "active":"",
+            "icon":"fa fa-star"
+        },
+        {
+            "name":"Projects",
+            "slug":"projects",
+            "template":"projects",
+            "active":"",
+            "icon":"fa fa-file-archive"
+        }
+    ]
+}
