@@ -24,6 +24,7 @@
         <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
     </head>
 
+
     <body data-spy="scroll" data-target=".navbar" data-offset="51">
         <div class="wrapper">
             @include('portfolio.templates.sidebar',$settings)
