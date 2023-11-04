@@ -13,7 +13,7 @@
                     {{-- {{dd($settings)}} --}}
                     @forelse ($settings['active_pages'] as $menu)
                         <li class="nav-item">
-                            <a class="nav-link {{$menu['active']}}"
+                            <a class="nav-link {{$slug == $menu['slug']?'active':''}}"
                             href="{{url($menu['slug'])}}">
                                 {{$menu['name']}}<i class="{{$menu['icon']}}"></i>
                             </a>

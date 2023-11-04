@@ -8,10 +8,11 @@ use Illuminate\Support\Facades\File;
 
 class FrontendController extends Controller
 {
-    public function homeIndex()
+    public function homeIndex($slug)
     {
         // $data['profile'] = (object) File::json(storage_path('app/public/profile/profile.json'));
         // $data['profile'] = (object) File::json(public_path('data/profile.json'));
+        $data['slug'] = $slug;
         $data['settings'] = File::json(storage_path('data/settings.json'));
         $data['profile'] = (object) File::json(storage_path('data/profile.json'));
         $data['projects'] = (object) File::json(storage_path('data/projects.json'));
