@@ -2,24 +2,39 @@
     "name": "My live projects",
     "short_desc": "test",
     "desc": "test desc",
-    "items":[
-        {
-            "name":"test 1",
-            "slug":"test_1",
-            "image":"Project 1",
-            "content":"test content"
+    "categories":["WordPress","Laravel"],
+    "items":{
+        "remit-daneshexchange":{
+            "name":"Remit Danesh Exchange",
+            "category":"Laravel",
+            "slug":"remit-daneshexchange",
+            "url":"https://remit.daneshexchange.com",
+            "image":"/assets/img/projects/remit-daneshexchange.png",
+            "content":"If you're looking for a faster and cheaper way to send money to your loved ones, we've got you covered. Our service is the best way to send money quickly and securely. Plus, our low fees make it more affordable than ever."
         },
-        {
-            "name":"test 2",
-            "slug":"test_2",
-            "image":"Project 1",
-            "content":"test content"
+        "pencilbox":{
+            "name":"PencilBox",
+            "category":"Laravel",
+            "slug":"pencilbox",
+            "url":"https://pencilbox.edu.bd",
+            "image":"/assets/img/projects/pencilbox.png",
+            "content":"We are PencilBox Training Institute. We provide training in IT sector. Our mission is to provide international standard training in Bangladesh's IT sector and thereby helping the society to build up a skilled workforce."
         },
-        {
-            "name":"test 3",
-            "slug":"test_2",
-            "image":"Project 1",
-            "content":"test content"
+        "buy-daneshexchange":{
+            "name":"buy-daneshexchange",
+            "category":"Laravel",
+            "slug":"buy-daneshexchange",
+            "url":"https://buy.daneshexchange.com",
+            "image":"/assets/img/projects/buy-daneshexchange.png",
+            "content":"Danesh Exchange is your Currency Exchange Specialists offering Best Exchange Rates in Australia. Purchase online to lock in our highest exchange rates. Collect from your local store, at the local post office or have it delivered to your home."
+        },
+        "merchshark":{
+            "name":"Merchshark-DK",
+            "category":"WordPress",
+            "slug":"merchshark",
+            "url":"https://merchshark.dk",
+            "image":"/assets/img/projects/merchshark.png",
+            "content":"There are plenty of movies, games, sports, and series, all of which are known and marketed on, for example, their unique logo or their primary characters. As a fan of, for example, a particular series, it has great personal value and importance that you can acquire accessories and accessories that represent that particular series. You can get to that at MerchShark, where we offer all our customers a wide selection of different merchandise. With us you will find, among other things, toys from all the well-known games and series such as Fortnite toys, Minecraft toys, Pokémon toys, Peppa Pig toys and more. Find unique merchandise & toys at MerchShark. In addition to this, we have opened up our Swedish shop Merchshark.se."
         }
-    ]
+    }
 }

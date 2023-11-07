@@ -1,6 +1,6 @@
 <div class="sidebar">
     <div class="sidebar-header">
-        <img src="{{ asset('assets/img/profile.jpg') }}" alt="Image">
+        <img src="{{$profile->profile_image}}" alt="Image">
     </div>
     <div class="sidebar-content">
         <nav class="navbar navbar-expand-md bg-dark navbar-dark">
